@@ -7,14 +7,14 @@ function getComputerChoice() {
     m="scissors";
    }
    else{
-    m="paper"
+    m="paper";
    }
    return m;
 }
 
 function getHumanChoice(){
     let m=prompt("Enter your choice: rock, paper or scissors");
-    m.toLowerCase();
+    m=m.toLowerCase();
     return m;
 }
 
@@ -22,19 +22,35 @@ let humanscore=0;
 let computerscore=0;
 
 function playround(human,computer){
+    human=getHumanChoice();
+    computer=getComputerChoice();
     if (human==="rock" && computer==="scissors" || human==="scissors" && computer==="paper" || human==="paper" && computer==="rock" ){
         console.log(`You Win! $(human) beats $(computer)`);
-        humanscore+=1
+        humanscore+=1;
     }
     else if(human===computer){
         console.log(`The match is a Draw.`);
     }
     else{
         console.log(`You Lose! $(computer) beats $(human)`);
-        computerscore+=1
+        computerscore+=1;
     }
 }
 
-let human=getHumanChoice()
-let computer=getComputerChoice()
-playround(human,computer);
+function playgame(){
+    let a,b=0;
+    for (let x=0; x<5; x++){
+        playround(a,b);
+    }
+    if (humanscore>computerscore){
+        console.log("You won the game!");
+    }
+    else if(humanscore===computerscore){
+        console.log("The game is a draw!");
+    }
+    else{
+        console.log("You lost the game!");
+    }
+}
+
+playgame();
